@@ -13,7 +13,7 @@ services:
       - MYSQL_DATABASE=freshrss
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    ports:
+    expose:
       - 3306
   freshrss:
     depends_on:

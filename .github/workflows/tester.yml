@@ -19,6 +19,7 @@ jobs:
           cd freshrss-docker
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           git pull
+          docker compose rm --force
           MYSQL_USER=${{ secrets.MYSQL_USER }} \
           MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
           MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \

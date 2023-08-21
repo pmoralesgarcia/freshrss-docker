@@ -35,7 +35,7 @@ services:
         --db-host freshrss-db
         --db-password ${MYSQL_PASSWORD}
         --db-type mysql 
-        --db-user freshrss 
+        --db-user ${MYSQL_USER}
         --default_user ${FRESHRSS_USER}
         --language en
       FRESHRSS_USER: |-

@@ -18,7 +18,7 @@ services:
   freshrss:
     depends_on:
       - freshrss-db
-    image: freshrss/freshrss:1.20.2-alpine
+    image: freshrss/freshrss:1.21.0-alpine
     volumes:
       - data:/var/www/FreshRSS/data
       - extensions:/var/www/FreshRSS/extensions 

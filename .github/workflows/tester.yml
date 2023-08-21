@@ -26,6 +26,6 @@ jobs:
           FRESHRSS_EMAIL=${{ secrets.FRESHRSS_EMAIL }} \
           FRESHRSS_PASSWORD=${{ secrets.FRESHRSS_PASSWORD }} \
           FRESHRSS_API_PASSWORD=${{ secrets.FRESHRSS_API_PASSWORD }} \
-          docker compose up
+          docker compose up --detach
         
   

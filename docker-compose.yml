@@ -9,10 +9,10 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=freshrss
-      - MYSQL_USER=${{ secrets.MYSQL_USER }}
-      - MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     expose:
       - 3306
   freshrss:
@@ -33,17 +33,17 @@ services:
         --api_enabled
         --db-base freshrss
         --db-host freshrss-db
-        --db-password ${{ secrets.MYSQL_PASSWORD }}
+        --db-password ${MYSQL_PASSWORD}
         --db-type mysql 
-        --db-user ${{ secrets.MYSQL_USER }}
-        --default_user ${{ secrets.FRESHRSS_USER }}
+        --db-user ${MYSQL_USER}
+        --default_user ${FRESHRSS_USER}
         --language en
       FRESHRSS_USER: |-
-        --api_password ${{ secrets.FRESHRSS_API_PASSWORD }}
-        --email ${{ secrets.FRESHRSS_EMAIL }}
+        --api_password ${FRESHRSS_API_PASSWORD}
+        --email ${FRESHRSS_EMAIL}
         --language en
-        --password ${{ secrets.FRESHRSS_PASSWORD }}
-        --user ${{ secrets.FRESHRSS_USER }} 
+        --password ${FRESHRSS_PASSWORD}
+        --user ${FRESHRSS_USER} 
 volumes:
  db_data:
  data: 

@@ -14,7 +14,6 @@ jobs:
         export-env: true
       env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          SECRET: op://app-cicd/hello-world/secret
           USERNAME: op://mariadb-docker/username
           
 

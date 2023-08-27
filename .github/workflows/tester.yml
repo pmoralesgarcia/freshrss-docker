@@ -14,17 +14,17 @@ jobs:
         export-env: true
       env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          USERNAME: op://mariadb-docker/username
-          
-
-            
+          USERNAME: op://production-server/username
+          PRIVATE_SSH_KEY: "op://production-server/private key"
+          SERVER_HOST: op://production-server/host
+                    
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{ secrets.HOST }}
+        host: $SERVER_HOST
         username: $USERNAME
-        key: ${{ secrets.PRIVATE_SSH_KEY }}
-        port: ${{ secrets.PORT }}
+        key: $PRIVATE_SSH_KEY
+        port: 22
         script: |
           cd ~
           rm -rf freshrss-docker

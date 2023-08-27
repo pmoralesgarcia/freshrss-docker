@@ -14,9 +14,9 @@ jobs:
         export-env: true
       env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          USERNAME: op://production-server/username
-          PRIVATE_SSH_KEY: op://production-server/key
-          SERVER_HOST: op://production-server/host
+          USERNAME: op://pablo/production-server/username
+          PRIVATE_SSH_KEY: op://pablo/production-server/key
+          SERVER_HOST: op://pablo/production-server/host
                     
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v1.0.0

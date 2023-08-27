@@ -18,6 +18,14 @@ jobs:
           USERNAME: op://pablo/production-server/username
           PRIVATE_SSH_KEY: op://pablo/production-server/key
           SERVER_HOST: op://pablo/production-server/host
+          MYSQL_ROOT_PASSWORD: op://pablo/mariadb-docker/root_password
+          MYSQL_USER: op://pablo/freshrss-docker/mysql_user
+          MYSQL_PASSWORD: op://pablo/freshrss-docker/mysql_password
+          FRESHRSS_USER: op://pablo/freshrss-docker/freshrss_user
+          FRESHRSS_EMAIL: op://pablo/freshrss-docker/freshrss_email
+          FRESHRSS_PASSWORD: op://pablo/freshrss-docker/freshrss_password
+          FRESHRSS_API_PASSWORD: op://pablo/freshrss-docker/FRESHRSS_API_PASSWORD
+          
                     
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v1.0.0
@@ -33,21 +41,21 @@ jobs:
           cd freshrss-docker
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           git pull
-          MYSQL_USER=${{ secrets.MYSQL_USER }} \
-          MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
-          MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
-          FRESHRSS_USER=${{ secrets.FRESHRSS_USER }} \
-          FRESHRSS_EMAIL=${{ secrets.FRESHRSS_EMAIL }} \
-          FRESHRSS_PASSWORD=${{ secrets.FRESHRSS_PASSWORD }} \
-          FRESHRSS_API_PASSWORD=${{ secrets.FRESHRSS_API_PASSWORD }} \
+          MYSQL_USER=${{ steps.op-load-secret.outputs.MYSQL_USER }} \
+          MYSQL_PASSWORD=${{ steps.op-load-secret.outputs.MYSQL_PASSWORD }} \
+          MYSQL_ROOT_PASSWORD=${{ steps.op-load-secret.outputs.MYSQL_ROOT_PASSWORD }} \
+          FRESHRSS_USER=${{ steps.op-load-secret.outputs.FRESHRSS_USER }} \
+          FRESHRSS_EMAIL=${{ steps.op-load-secret.outputs.FRESHRSS_EMAIL }} \
+          FRESHRSS_PASSWORD=${{ steps.op-load-secret.outputs.FRESHRSS_PASSWORD }} \
+          FRESHRSS_API_PASSWORD=${{ steps.op-load-secret.outputs.FRESHRSS_API_PASSWORD }} \
           docker compose down
-          MYSQL_USER=${{ secrets.MYSQL_USER }} \
-          MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
-          MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
-          FRESHRSS_USER=${{ secrets.FRESHRSS_USER }} \
-          FRESHRSS_EMAIL=${{ secrets.FRESHRSS_EMAIL }} \
-          FRESHRSS_PASSWORD=${{ secrets.FRESHRSS_PASSWORD }} \
-          FRESHRSS_API_PASSWORD=${{ secrets.FRESHRSS_API_PASSWORD }} \
+          MYSQL_USER=${{ steps.op-load-secret.outputs.MYSQL_USER }} \
+          MYSQL_PASSWORD=${{ steps.op-load-secret.outputs.MYSQL_PASSWORD }} \
+          MYSQL_ROOT_PASSWORD=${{ steps.op-load-secret.outputs.MYSQL_ROOT_PASSWORD }} \
+          FRESHRSS_USER=${{ steps.op-load-secret.outputs.FRESHRSS_USER }} \
+          FRESHRSS_EMAIL=${{ steps.op-load-secret.outputs.FRESHRSS_EMAIL }} \
+          FRESHRSS_PASSWORD=${{ steps.op-load-secret.outputs.FRESHRSS_PASSWORD }} \
+          FRESHRSS_API_PASSWORD=${{ steps.op-load-secret.outputs.FRESHRSS_API_PASSWORD }} \
           docker compose up --detach
         
   

@@ -1,5 +1,5 @@
 name: remote into server
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   Build:
     name: Build

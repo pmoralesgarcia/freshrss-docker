@@ -1,4 +1,4 @@
-name: remote into server
+name: Deploy FreshRSS
 on: [push, workflow_dispatch]
 jobs:
   Build:
